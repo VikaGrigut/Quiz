@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress NavigationFile -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment2">
+    <fragment
+        android:id="@+id/mainFragment2"
+        android:name="com.example.quiz.fragments.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment2_to_question1Fragment2"
+            app:destination="@id/question1Fragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/question1Fragment2"
+        android:name="com.example.quiz.fragments.QuestionsFragment"
+        android:label="Question1Fragment" >
+        <action
+            android:id="@+id/action_question1Fragment2_to_resultsFragment"
+            app:destination="@id/resultsFragment">
+            <argument
+                android:name="results"
+                app:argType="string"
+                android:defaultValue="" />
+            <argument
+                android:name="answers"
+                app:argType="string"
+                android:defaultValue="" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.example.quiz.fragments.ResultsFragment"
+        android:label="ResultsFragment"
+        >
+        <action
+            android:id="@+id/action_resultsFragment_to_mainFragment2"
+            app:destination="@id/mainFragment2" />
+    </fragment>
+</navigation>
