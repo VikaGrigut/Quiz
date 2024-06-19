@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quiz.R
@@ -17,12 +18,12 @@ class ResultsFragment:Fragment(R.layout.results_fragment) {
 
 
     private var _binding: ResultsFragmentBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
+    ): ConstraintLayout? {
         _binding = ResultsFragmentBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     @SuppressLint("SetTextI18n")
@@ -30,11 +31,11 @@ class ResultsFragment:Fragment(R.layout.results_fragment) {
         super.onViewCreated(view, savedInstanceState)
         val results = arguments?.getString("results")
         val textForSharing = arguments?.getString("answers")
-        binding.resultsTxt.text = "Ваш результат: $results/10"
-        binding.exitBtn.setOnClickListener{ exitProcess(0)}
-        binding.restartBtn.setOnClickListener{findNavController().
+        binding?.resultsTxt?.text = "Ваш результат: $results/10"
+        binding?.exitBtn?.setOnClickListener{ exitProcess(0)}
+        binding?.restartBtn?.setOnClickListener{findNavController().
             navigate(ResultsFragmentDirections.actionResultsFragmentToMainFragment2())}
-        binding.shareBtn.setOnClickListener{
+        binding?.shareBtn?.setOnClickListener{
             val intentShare = Intent(Intent.ACTION_SEND)
             intentShare.addCategory(Intent.CATEGORY_DEFAULT)
             intentShare.setType("text/plain")
